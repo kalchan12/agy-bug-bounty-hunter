@@ -165,7 +165,7 @@ git clone git@github.com:kalchan12/agy-bug-bounty-hunter.git ~/agy-bug-bounty-hu
 
 # 2. Symlink the OpenCode skill into OpenCode's global skills directory
 mkdir -p ~/.config/opencode/skills
-ln -s ~/agy-bug-bounty-hunter/opencode-skills/bug-bounty-hunter ~/.config/opencode/skills/bug-bounty-hunter
+ln -s ~/agy-bug-bounty-hunter/opencode-skills/bounty-hunter-opencode ~/.config/opencode/skills/bounty-hunter-opencode
 ```
 
 Or register the folder as an explicit source root in any `opencode.json(c)`:
@@ -179,9 +179,8 @@ Or register the folder as an explicit source root in any `opencode.json(c)`:
 
 ### Notes
 
-- Skill ID in OpenCode is **`bug-bounty-hunter`** (path-derived, case-sensitive).
-- OpenCode's compatibility discovery also picks up the Antigravity edition from
-  `~/.agents/skills/bug-bounty-hunter`. Sources registered later win, so the
-  `~/.config/opencode/skills` copy (this OpenCode adaptation) takes precedence if both exist.
+- Skill ID in OpenCode is **`bounty-hunter-opencode`** (path-derived, case-sensitive),
+  so it coexists with the `bug-bounty-hunter` skill picked up from `~/.agents/skills`
+  (the Antigravity edition) instead of overriding it — both stay available.
 - Run `/reload` (or start a fresh session) if you install while an OpenCode session is open.
 - Update by `git pull` in your clone — the symlink points into the repo, so no re-setup needed.

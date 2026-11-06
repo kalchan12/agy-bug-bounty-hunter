@@ -1,5 +1,5 @@
 ---
-name: bug-bounty-hunter
+name: bounty-hunter-opencode
 description: >-
   Audits web applications and REST/GraphQL APIs for security vulnerabilities, performs reconnaissance,
   and generates submission-ready bug bounty reports for HackerOne, Bugcrowd, and Intigriti.

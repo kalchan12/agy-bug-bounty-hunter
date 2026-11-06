@@ -147,3 +147,41 @@ As you encounter new vulnerability classes or write custom testing checklists:
    git push origin main
    ```
    On other machines, simply run `git pull` inside `~/.agents/skills/bug-bounty-hunter`.
+
+---
+
+## OpenCode (V2) Installation
+
+The same methodology is packaged for **OpenCode V2** under `opencode-skills/bug-bounty-hunter/`.
+The attacker-prompt content in `references/` is identical to the Antigravity edition; only the
+orchestrator differs (it uses OpenCode's built-in `subagent` tool instead of Antigravity's
+`invoke_subagent`). The Antigravity skill above remains untouched.
+
+### Install globally
+
+```bash
+# 1. Clone the repo somewhere persistent
+git clone git@github.com:kalchan12/agy-bug-bounty-hunter.git ~/agy-bug-bounty-hunter
+
+# 2. Symlink the OpenCode skill into OpenCode's global skills directory
+mkdir -p ~/.config/opencode/skills
+ln -s ~/agy-bug-bounty-hunter/opencode-skills/bug-bounty-hunter ~/.config/opencode/skills/bug-bounty-hunter
+```
+
+Or register the folder as an explicit source root in any `opencode.json(c)`:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": ["~/agy-bug-bounty-hunter/opencode-skills"]
+}
+```
+
+### Notes
+
+- Skill ID in OpenCode is **`bug-bounty-hunter`** (path-derived, case-sensitive).
+- OpenCode's compatibility discovery also picks up the Antigravity edition from
+  `~/.agents/skills/bug-bounty-hunter`. Sources registered later win, so the
+  `~/.config/opencode/skills` copy (this OpenCode adaptation) takes precedence if both exist.
+- Run `/reload` (or start a fresh session) if you install while an OpenCode session is open.
+- Update by `git pull` in your clone — the symlink points into the repo, so no re-setup needed.
